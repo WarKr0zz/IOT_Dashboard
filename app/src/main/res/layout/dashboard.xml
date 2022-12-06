@@ -13,29 +13,133 @@
         android:clipToPadding="false"
         android:orientation="horizontal"
         android:gravity="center">
+
         <androidx.cardview.widget.CardView
-            android:layout_width="160dp"
-            android:layout_height="190dp"
+            android:layout_width="144dp"
+            android:layout_height="173dp"
             android:layout_margin="10dp"
             android:clickable="true"
             android:foreground="?android:attr/selectableItemBackground">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="134dp"
-                    android:layout_height="151dp"
+                    android:layout_width="68dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/circles_shape"
+                    android:backgroundTint="@android:color/holo_purple"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_baseline_radio_button_checked_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Bouton"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="1dp"
+                    android:background="#E8E8E8" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:gravity="center"
+                    android:text="Tu vas repartir mal mon copain :)"
+                    android:textColor="@android:color/darker_gray"
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="144dp"
+            android:layout_height="173dp"
+            android:layout_margin="10dp"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="68dp"
+                    android:layout_height="70dp"
                     android:background="@drawable/circles_shape"
                     android:backgroundTint="#FF0000"
                     android:padding="10dp"
                     android:src="@drawable/ic_baseline_thermostat_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Température"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="1dp"
+                    android:background="#E8E8E8" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Squalala nous sommes partis :)"
+                    android:textColor="@android:color/darker_gray"
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp">
+
+        <ImageView
+            android:layout_width="68dp"
+            android:layout_height="70dp"
+            android:background="@drawable/circles_shape"
+            android:backgroundTint="@android:color/holo_blue_light"
+            android:padding="10dp"
+            android:src="@drawable/ic_baseline_other_houses_24" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Gestion des appareils"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="1dp"
+            android:layout_marginHorizontal="1dp" // fin du taff du 12/06
+            android:background="#E8E8E8" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:gravity="center"
+            android:text="Tu vas repartir mal mon copain :)"
+            android:textColor="@android:color/darker_gray"
+    </LinearLayout>
 
 
 </LinearLayout>
