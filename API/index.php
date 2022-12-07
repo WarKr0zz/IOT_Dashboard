@@ -1,5 +1,6 @@
 <?php
 require_once("./api.php");
+require("phpMQTT.php");
 
 
 try{
@@ -72,6 +73,7 @@ try{
             
         }
     } else {
+        Subsribe();
         throw new Exception ("Probleme de récupération de données.");
     }
 } catch(Exception $e){
