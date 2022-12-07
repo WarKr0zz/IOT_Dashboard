@@ -83,3 +83,65 @@ try{
     ];
     print_r($erreur);
 }
+?>
+
+
+
+<html>
+    <head>
+    <title> JavaScript MQTT</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
+
+     <script>  
+       var mqtt;
+        var reconnextTimeout = 2000;
+        var host ="localhost";
+        var port =9001;
+
+        function onConnect(){
+            console.log("Connected fdp");
+            mqtt.subscribe("test");
+            message = new Paho.MQTT.Message("Hello world");
+            message.destinationName= "sensor1";
+            mqtt.send(message);
+        }
+
+        function MQTTconnect() {
+            console.log("connecting to "+host + "" +port);
+            mqtt = new Paho.MQTT.Client(host,port,"clientjs");
+            //document.write("connecting to " + host);
+            var options ={
+                timeout: 3,
+                onSuccess:onConnect,
+                onFailure:onFailure,                
+            };
+            mqtt.onMessageArrived = onMessageArrived
+            mqtt.connect(options);
+        }
+        function onFailure(message) {
+            console.log("conneciton fail");
+            setTimeout(MQTTconnect, reconnectTimeout);
+        }
+        function onMessageArrived(msg){
+            out_msg="Message recu "+msg.payloadString+"<br>";
+            //out_msg=out_msg+"ùessage recieve topic"+msg.destinationName;
+            console.log(out_msg);
+            var div = document.getElementById("message");
+            div.innerHTML = out_msg;
+        }
+        
+       
+</script>
+    </head>
+    <body>
+    <h1></h1>
+    <div id="message"></div>
+    <script>
+        MQTTconnect();
+    </script>
+    </body>
+
+
+</html>
+
