@@ -91,15 +91,4 @@ function LatestInfoFromDevice($deviceId,$Information) {
 }
 
 
-function Subsribe() {
-    
-
-
-
-
-
-    
-}
-
-
 
