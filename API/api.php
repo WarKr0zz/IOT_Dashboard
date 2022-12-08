@@ -88,7 +88,7 @@ function LatestInfoFromDevice($deviceId,$Information) {
     $stmt->closeCursor();
     print_r($DeviceInfo);
 echo "prout";
-
+qzdqzd
 }
 
 
