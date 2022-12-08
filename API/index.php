@@ -73,7 +73,6 @@ try{
             
         }
     } else {
-        Subsribe();
         throw new Exception ("Probleme de récupération de données.");
     }
 } catch(Exception $e){
@@ -85,8 +84,6 @@ try{
 }
 ?>
 
-
-
 <html>
     <head>
     <title> JavaScript MQTT</title>
@@ -96,8 +93,8 @@ try{
      <script>  
        var mqtt;
         var reconnextTimeout = 2000;
-        var host ="localhost";
-        var port =9001;
+        var host ="128.128.0.58";
+        var port =2302;
 
         function onConnect(){
             console.log("Connected fdp");

@@ -87,8 +87,10 @@ function LatestInfoFromDevice($deviceId,$Information) {
     $DeviceInfo = $stmt->fetchALL(PDO::FETCH_ASSOC);
     $stmt->closeCursor();
     print_r($DeviceInfo);
-
+echo "prout";
 }
+
+
 
 
 
