@@ -26,16 +26,6 @@ function getConnexion(){
     return new PDO("mysql:host=128.128.0.58:2303;dbname=projet_iot_test","root","tiger");
 }
 
-function InsertNewMesure($deviceID,$State,$Teamperature) {
-    $pdo = getConnexion();
-    $req = "INSERT INTO `device_id` (`Id`, `Etat`, `Temperature`) VALUES ($deviceID, $State, $Teamperature);";
-    $stmt = $pdo->prepare($req);
-    $stmt->execute();
-    $Device = $stmt->fetchALL(PDO::FETCH_ASSOC);
-    $stmt->closeCursor();
-    
-}
-
 function Signin($username,$password,$Role) {
     $pdo = getConnexion();
     $Password_hash = password_hash($password, PASSWORD_BCRYPT);
@@ -81,17 +71,6 @@ function TryLogin($username,$password) {
     }
 }
 
-
-function LatestInfoFromDevice($deviceId,$Information) {
-    $pdo = getConnexion();
-    $req = "SELECT * FROM `device_id` WHERE Id = $deviceId;";
-    $stmt = $pdo->prepare($req);
-    $stmt->execute();
-    $DeviceInfo = $stmt->fetchALL(PDO::FETCH_ASSOC);
-    $stmt->closeCursor();
-    print_r($DeviceInfo);
-echo "prout";
-}
 
 function DataToBDD($data) {
     $parts = explode("/",$data);
