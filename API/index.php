@@ -73,6 +73,7 @@ try{
             
         }
     } else {
+      
         throw new Exception ("Probleme de récupération de données.");
     }
 } catch(Exception $e){
@@ -94,20 +95,19 @@ try{
        var mqtt;
         var reconnextTimeout = 2000;
         var host ="128.128.0.58";
-        var port =2302;
+        var port =2306;
 
         function onConnect(){
-            console.log("Connected fdp");
+            console.log("Connected to mqtt server");
             mqtt.subscribe("test");
-            message = new Paho.MQTT.Message("Hello world");
-            message.destinationName= "sensor1";
+            message = new Paho.MQTT.Message("Connected");
+            message.destinationName= "Verification_connect";
             mqtt.send(message);
         }
 
         function MQTTconnect() {
             console.log("connecting to "+host + "" +port);
             mqtt = new Paho.MQTT.Client(host,port,"clientjs");
-            //document.write("connecting to " + host);
             var options ={
                 timeout: 3,
                 onSuccess:onConnect,
@@ -121,8 +121,7 @@ try{
             setTimeout(MQTTconnect, reconnectTimeout);
         }
         function onMessageArrived(msg){
-            out_msg="Message recu "+msg.payloadString+"<br>";
-            //out_msg=out_msg+"ùessage recieve topic"+msg.destinationName;
+            out_msg=msg.payloadString+"<br>";
             console.log(out_msg);
             var div = document.getElementById("message");
             div.innerHTML = out_msg;

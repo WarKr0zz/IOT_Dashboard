@@ -23,7 +23,7 @@ function getInformationByDeviceId($deviceId){
 }
 
 function getConnexion(){
-    return new PDO("mysql:host=localhost;dbname=projet_iot_test","root","");
+    return new PDO("mysql:host=128.128.0.58:2303;dbname=projet_iot_test","root","tiger");
 }
 
 function InsertNewMesure($deviceID,$State,$Teamperature) {
@@ -88,7 +88,6 @@ function LatestInfoFromDevice($deviceId,$Information) {
     $stmt->closeCursor();
     print_r($DeviceInfo);
 echo "prout";
-qzdqzd
 }
 
 
