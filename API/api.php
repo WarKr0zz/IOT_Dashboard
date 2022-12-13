@@ -61,8 +61,8 @@ function TryLogin($username,$password) {
         } else {
             // the password is incorrect, the user is not authenticated
             // display an error message to the user
-            echo 'Incorrect username or passwordddddddd';
-            echo $user['Password'];
+            echo 'Incorrect username or password';
+
         }
     } else {
         // no user with the given username was found in the database
