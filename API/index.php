@@ -14,7 +14,7 @@ try{
                 }
             break;
 
-            case "Signin" :
+            case "Signup" :
                 if(empty($url[1])){
                     throw new Exception ("La demande n'est pas valide, véirifez l'URL au niveau 1");
                 } else {
@@ -24,7 +24,7 @@ try{
                         if(empty($url[3])){
                             throw new Exception ("La demande n'est pas valide, véirifez l'URL au niveau 3");
                         } else {
-                        Signin($url[1],$url[2],$url[3]);
+                        Signup($url[1],$url[2],$url[3]);
                         }
                     }
 

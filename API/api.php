@@ -26,7 +26,7 @@ function getConnexion(){
     return new PDO("mysql:host=128.128.0.58:2303;dbname=projet_iot_test","root","tiger");
 }
 
-function Signin($username,$password,$Role) {
+function Signup($username,$password,$Role) {
     $pdo = getConnexion();
     $Password_hash = password_hash($password, PASSWORD_BCRYPT);
     $req = "INSERT INTO `Identification` (`Username`, `Password`, `Role`) VALUES ('$username', '$Password_hash', '$Role')";
@@ -78,7 +78,7 @@ function DataToBDD($data) {
     $b = $parts[1];
     $c = $parts[2];
     $pdo = getConnexion();
-    $req = "INSERT INTO `device_id` (`clé`, `Id`, `Etat`, `Temperature`, `Date`) VALUES (NULL, $a, $b, $c, CURRENT_TIMESTAMP);";
+    $req = "INSERT INTO `device_id` (`cle`, `Id`, `Etat`, `Temperature`, `Date`) VALUES (NULL, $a, $b, $c, CURRENT_TIMESTAMP);";
     $stmt = $pdo->prepare($req);
     $stmt->execute();
 }

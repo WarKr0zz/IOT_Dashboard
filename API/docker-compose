@@ -10,14 +10,12 @@ services:
       - "2305:1883"
       - "2306:9001"
   Jenkins:
-    image: jenkins/jenkins
+    image: jenkins/jenkins:lts-jdk11
     restart: 'always'
     container_name: 'my-Jenkins'
     ports:
       - "2307:8080"
       - "2308:50000"
-    volumes: 
-      - ./jenkins_home:/var/jenkins_home
 
   Portainer:
     image: portainer/portainer
@@ -61,6 +59,7 @@ services:
       MYSQL_ROOT_PASSWORD: tiger
     networks:
       - web-db-net
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: 'my-phpmyadmin'
@@ -76,6 +75,10 @@ services:
       - /sessions
     networks:
       - web-db-net
+
+  
+
+
   # adminer:
     # image: adminer
     # container_name: 'my-adminer'
