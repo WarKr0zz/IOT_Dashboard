@@ -14,7 +14,7 @@ try{
                 }
             break;
 
-            case "NewDevice" : 
+            case "Signin" :
                 if(empty($url[1])){
                     throw new Exception ("La demande n'est pas valide, véirifez l'URL au niveau 1");
                 } else {
@@ -24,22 +24,8 @@ try{
                         if(empty($url[3])){
                             throw new Exception ("La demande n'est pas valide, véirifez l'URL au niveau 3");
                         } else {
-                            
-                                InsertNewMesure($url[1],$url[2],$url[3]);
-                            
+                        Signin($url[1],$url[2],$url[3]);
                         }
-                    }
-                }
-            break;
-
-            case "Signin" :
-                if(empty($url[1])){
-                    throw new Exception ("La demande n'est pas valide, véirifez l'URL au niveau 1");
-                } else {
-                    if(empty($url[2])){
-                        throw new Exception ("La demande n'est pas valide, véirifez l'URL au niveau 2");
-                    } else {
-                        Signin($url[1],$url[2]);
                     }
 
                 }
@@ -56,20 +42,7 @@ try{
                     }
 
                 }
-            break;
-
-            case "Latest" :
-                if(empty($url[1])){
-                    throw new Exception ("La demande n'est pas valide, véirifez l'URL au niveau 1");
-                } else {
-                    if(empty($url[2])){
-                        throw new Exception ("La demande n'est pas valide, véirifez l'URL au niveau 1");
-                    } else{
-                        LatestInfoFromDevice($url[1],$url[2]);
-                    }
-                }
-
-            
+            break;            
         }
     } else {
       

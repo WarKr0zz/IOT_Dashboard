@@ -13,7 +13,7 @@ function getDeviceId(){
 function getInformationByDeviceId($deviceId){
 
     $pdo = getConnexion();
-    $req = "SELECT * FROM `device_id` WHERE Id = $deviceId;";
+    $req = "SELECT * FROM `device_id`WHERE Id = $deviceId ORDER BY id DESC LIMIT 1 ;";
     $stmt = $pdo->prepare($req);
     $stmt->execute();
     $Device = $stmt->fetchALL(PDO::FETCH_ASSOC);
@@ -36,9 +36,10 @@ function InsertNewMesure($deviceID,$State,$Teamperature) {
     
 }
 
-function Signin($username,$password) {
+function Signin($username,$password,$Role) {
     $pdo = getConnexion();
-    $req = "INSERT INTO `identification` (`Username`, `Password`) VALUES ('$username', '$password')";
+    $Password_hash = password_hash($password, PASSWORD_BCRYPT);
+    $req = "INSERT INTO `Identification` (`Username`, `Password`, `Role`) VALUES ('$username', '$Password_hash', '$Role')";
     $stmt = $pdo->prepare($req);
     $stmt->execute();
     $Device = $stmt->fetchALL(PDO::FETCH_ASSOC);
@@ -49,18 +50,19 @@ function Signin($username,$password) {
 
 function TryLogin($username,$password) {
 
-    $db = mysqli_connect('localhost', 'root', '', 'projet_iot_test');
+    $db = mysqli_connect('128.128.0.58:2303', 'root', 'tiger', 'projet_iot_test');
 
     // get the username and password provided by the user
 
     // check if a user with the given username exists in the database
-    $query = "SELECT * FROM identification WHERE username = '$username'";
+    $query = "SELECT * FROM Identification WHERE username = '$username'";
     $result = mysqli_query($db, $query);
 
     if (mysqli_num_rows($result) > 0) {
         // a user with the given username was found in the database
         // get the user's record from the result set
         $user = mysqli_fetch_assoc($result);
+        
         // check if the provided password matches the password for the user in the database
         if (password_verify($password, $user['Password'])) {
             // the password is correct, the user is authenticated
@@ -70,6 +72,7 @@ function TryLogin($username,$password) {
             // the password is incorrect, the user is not authenticated
             // display an error message to the user
             echo 'Incorrect username or passwordddddddd';
+            echo $user['Password'];
         }
     } else {
         // no user with the given username was found in the database
