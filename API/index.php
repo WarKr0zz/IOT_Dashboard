@@ -2,7 +2,6 @@
 require_once("./api.php");
 require("phpMQTT.php");
 
-
 try{
     if(!empty($_GET['demande'])){
         $url = explode("/", filter_var($_GET['demande'],FILTER_SANITIZE_URL));
@@ -75,6 +74,8 @@ try{
     } else {
       
         throw new Exception ("Probleme de récupération de données.");
+        
+        
     }
 } catch(Exception $e){
     $erreur = [

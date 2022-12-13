@@ -90,6 +90,17 @@ function LatestInfoFromDevice($deviceId,$Information) {
 echo "prout";
 }
 
+function DataToBDD($data) {
+    $parts = explode("/",$data);
+    $a = $parts[0];
+    $b = $parts[1];
+    $c = $parts[2];
+    $pdo = getConnexion();
+    $req = "INSERT INTO `device_id` (`clé`, `Id`, `Etat`, `Temperature`, `Date`) VALUES (NULL, $a, $b, $c, CURRENT_TIMESTAMP);";
+    $stmt = $pdo->prepare($req);
+    $stmt->execute();
+}
+
 
 
 
