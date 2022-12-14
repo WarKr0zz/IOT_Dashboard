@@ -13,7 +13,7 @@ function getDeviceId(){
 function getInformationByDeviceId($deviceId){
 
     $pdo = getConnexion();
-    $req = "SELECT * FROM `device_id`WHERE Id = $deviceId ORDER BY id DESC LIMIT 1 ;";
+    $req = "SELECT * FROM `device_id`WHERE Id = $deviceId ORDER BY Date DESC LIMIT 1 ;";
     $stmt = $pdo->prepare($req);
     $stmt->execute();
     $Info = $stmt->fetchALL(PDO::FETCH_ASSOC);

@@ -164,7 +164,7 @@ try{
                                 $TMP =  $Info[0]["Temperature"];
                                 $DATE = $Info[0]["Date"];
                                 echo ("le device est le numéro $IDD, son dernier etat etait $Etat, à $DATE sa température etait de $TMP ");
-                               echo $Info[0]["Temperature"];
+
                         }
                     break;
 
