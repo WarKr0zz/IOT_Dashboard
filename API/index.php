@@ -8,11 +8,25 @@ try{
         switch($url[0]){
             case "DeviceId" :
                 if(empty($url[1])){
-                    $Device= getDeviceId();
-                    print_r($Device);
+                    $Devices= getDeviceId();
+
+                    //var_dump($Devices); 
+                    //echo '<pre>'; var_dump($Devices); echo '</pre>';
+
+                    foreach ($Devices as $Device){               
+                        foreach ($Device as $data)
+                        { 
+
+                            echo $data.",";
+                        }
+                    echo "</br>";
+                }
                 } else {
                     $Info=getInformationByDeviceId($url[1]);
-                    print_r($Info);
+                    foreach ($Info[0] as $data)
+                                { 
+                                    echo $data.",";
+                                }
                 }
             break;
 
@@ -123,23 +137,34 @@ try{
                 switch($url[0]){
                     case "DeviceId" :
                         if(empty($url[1])){
-                            $Device= getDeviceId();
-                            foreach ($Device[0] as $key)
-                             { 
-                                echo $key.",";
-                            }
+                            $Devices= getDeviceId();
+
+                            //var_dump($Devices); 
+                            //echo '<pre>'; var_dump($Devices); echo '</pre>';
+
+                            foreach ($Devices as $Device){               
+                                foreach ($Device as $data)
+                                { 
+
+                                    echo $data.",";
+                                }
                             echo "</br>";
-
-                            print_r($Device[0]);
-                            $test = $Device[0];
-
-                            echo $Device[0]["Id"];
-                           
-                            
-                            
+                        }
+                            //echo $Device[0]["Id"];
                         } else {
                             $Info=getInformationByDeviceId($url[1]);
-                            print_r($Info);
+                            foreach ($Info[0] as $data)
+                                { 
+
+                                    echo $data.",";
+                                }
+                                echo "</br>";
+                                $IDD = $Info[0]["Id"];
+                                $Etat =  $Info[0]["Etat"];
+                                $TMP =  $Info[0]["Temperature"];
+                                $DATE = $Info[0]["Date"];
+                                echo ("le device est le numéro $IDD, son dernier etat etait $Etat, à $DATE sa température etait de $TMP ");
+                               echo $Info[0]["Temperature"];
                         }
                     break;
 

@@ -6,11 +6,11 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 
 opts = Options()
-opts.add_argument("user-agent=Selenium")
+opts.add_argument("user-agent=Mozilla")
 
 DRIVER_PATH = 'D:\chromedriver.exe'
 driver = webdriver.Chrome(executable_path=DRIVER_PATH,chrome_options=opts)
-driver.get('http://localhost/IOT_Dashboard/API/DeviceId/')
+driver.get('http://localhost/IOT_Dashboard/API/DeviceId/1')
 
 
 
