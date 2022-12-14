@@ -9,13 +9,18 @@ services:
     ports:
       - "2305:1883"
       - "2306:9001"
-  Jenkins:
-    image: jenkins/jenkins:lts-jdk11
+  jenkins:
+    image: jenkins/jenkins:lts
+    privileged: true
+    user: root
     restart: 'always'
     container_name: 'my-Jenkins'
     ports:
       - "2307:8080"
       - "2308:50000"
+    volumes:
+      - /home/${myname}/jenkins_compose/jenkins_configuration:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
 
   Portainer:
     image: portainer/portainer
