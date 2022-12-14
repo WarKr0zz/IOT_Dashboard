@@ -125,7 +125,7 @@ try{
     <h1></h1>
     <div id="message"></div>
 
-    <div id="test"> <?php 
+    <div id="WebScrapping"> <?php 
 
             if (substr($_SERVER['HTTP_USER_AGENT'], 0, 7) === 'Mozilla') {
 
