@@ -7,7 +7,7 @@ function getDeviceId(){
    $stmt->execute();
    $Device = $stmt->fetchALL(PDO::FETCH_ASSOC);
    $stmt->closeCursor();
-   print_r($Device);
+   return $Device;
 }
 
 function getInformationByDeviceId($deviceId){
@@ -16,9 +16,9 @@ function getInformationByDeviceId($deviceId){
     $req = "SELECT * FROM `device_id`WHERE Id = $deviceId ORDER BY id DESC LIMIT 1 ;";
     $stmt = $pdo->prepare($req);
     $stmt->execute();
-    $Device = $stmt->fetchALL(PDO::FETCH_ASSOC);
+    $Info = $stmt->fetchALL(PDO::FETCH_ASSOC);
     $stmt->closeCursor();
-    print_r($Device);
+    return $Info;
     //echo "Temperature de 25¨degres..................... Etat : ON";
 }
 

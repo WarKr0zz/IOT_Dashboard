@@ -1,16 +1,18 @@
 <?php
 require_once("./api.php");
 require("phpMQTT.php");
-
+if (substr($_SERVER['HTTP_USER_AGENT'], 0, 7) !== 'Mozilla') {
 try{
     if(!empty($_GET['demande'])){
         $url = explode("/", filter_var($_GET['demande'],FILTER_SANITIZE_URL));
         switch($url[0]){
             case "DeviceId" :
                 if(empty($url[1])){
-                    getDeviceId();
+                    $Device= getDeviceId();
+                    print_r($Device);
                 } else {
-                    getInformationByDeviceId($url[1]);
+                    $Info=getInformationByDeviceId($url[1]);
+                    print_r($Info);
                 }
             break;
 
@@ -56,6 +58,7 @@ try{
         "code" => $e->getCode()
     ];
     print_r($erreur);
+}
 }
 ?>
 
@@ -107,8 +110,87 @@ try{
     <body>
     <h1></h1>
     <div id="message"></div>
+
+    <div id="test"> <?php 
+
+            if (substr($_SERVER['HTTP_USER_AGENT'], 0, 7) === 'Mozilla') {
+
+            try{
+
+
+            if(!empty($_GET['demande'])){
+                $url = explode("/", filter_var($_GET['demande'],FILTER_SANITIZE_URL));
+                switch($url[0]){
+                    case "DeviceId" :
+                        if(empty($url[1])){
+                            $Device= getDeviceId();
+                            foreach ($Device[0] as $key)
+                             { 
+                                echo $key.",";
+                            }
+                            echo "</br>";
+
+                            print_r($Device[0]);
+                            $test = $Device[0];
+
+                            echo $Device[0]["Id"];
+                           
+                            
+                            
+                        } else {
+                            $Info=getInformationByDeviceId($url[1]);
+                            print_r($Info);
+                        }
+                    break;
+
+                    case "Signup" :
+                        if(empty($url[1])){
+                            throw new Exception ("La demande n'est pas valide, véirifez l'URL au niveau 1");
+                        } else {
+                            if(empty($url[2])){
+                                throw new Exception ("La demande n'est pas valide, véirifez l'URL au niveau 2");
+                            } else {
+                                if(empty($url[3])){
+                                    throw new Exception ("La demande n'est pas valide, véirifez l'URL au niveau 3");
+                                } else {
+                                Signup($url[1],$url[2],$url[3]);
+                                }
+                            }
+
+                        }
+                    break;
+
+                    case "Login" : 
+                        if(empty($url[1])){
+                            throw new Exception ("La demande n'est pas valide, véirifez l'URL au niveau 1");
+                        } else {
+                            if(empty($url[2])){
+                                throw new Exception ("La demande n'est pas valide, véirifez l'URL au niveau 2");
+                            } else {
+                                TryLogin($url[1],$url[2]);
+                            }
+
+                        }
+                    break;            
+                }
+            } else {
+            
+                throw new Exception ("Probleme de récupération de données.");
+                
+                
+            }
+        } catch(Exception $e){
+            $erreur = [
+                "message" => $e->getMessage(),
+                "code" => $e->getCode()
+            ];
+            print_r($erreur);
+        }  
+    }
+?> </div>
+
     <script>
-        MQTTconnect();
+        //MQTTconnect();
     </script>
     </body>
 
